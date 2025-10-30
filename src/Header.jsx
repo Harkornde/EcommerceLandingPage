@@ -2,9 +2,14 @@ export default function Header() {
   return (
     <>
       <div>
-        <header className="flex md:w-[1110px] md:h-[50px] md:mt-7 items-center justify-between m-auto">
+        <header className="flex md:w-[1110px] md:h-[50px] mt-[19px] md:mt-7 items-center justify-around md:justify-between m-auto">
           {/* Logo and list container */}
-          <div className="flex gap-[59px]">
+          <div className="flex items-end md:items-center gap-4 md:gap-[59px]">
+            {/* Working with the modal */}
+            <div className="md:hidden" onClick={() => console.log("clicked")}>
+              <img src="images/icon-menu.svg" />
+            </div>
+
             {/* Logo bar */}
             <div>
               <img src="/images/logo.svg" />
@@ -23,12 +28,12 @@ export default function Header() {
           </div>
 
           {/* Cart and Profile */}
-          <div className="flex gap-[46px] items-center">
+          <div className="flex gap-[22px] md:gap-[46px] items-center">
             <div>
               <img src="images/icon-cart.svg" className="w-[22px] h-5" />
             </div>
             <div>
-              <img src="images/image-avatar.png" className="w-[50px]" />
+              <img src="images/image-avatar.png" className="w-6 md:w-[50px]" />
             </div>
           </div>
         </header>
@@ -36,5 +41,3 @@ export default function Header() {
     </>
   );
 }
-///images/icon-cart.svg
-///images/image-avatar.png
