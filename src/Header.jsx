@@ -1,4 +1,5 @@
 import { useState } from "react";
+import NavMenu from "./NavMenu/navMenu";
 
 export default function Header() {
   const [toggle, turnToglle] = useState(false);
@@ -50,21 +51,17 @@ export default function Header() {
                 />
               </button>
               <ul className="flex gap-5 mt-[54px] ml-[25px] flex-col text-[#1D2026] font-semibold">
-                <li>Collections</li>
-                <li>Men</li>
-                <li>Women</li>
-                <li>About</li>
-                <li>Contact</li>
+                {NavMenu.map((navmenu) => (
+                  <li>{navmenu.Collections}</li>
+                ))}
               </ul>
             </div>
 
             <div className="hidden md:block">
               <ul className="flex gap-[33px] text-[#69707D] font-semiboldl">
-                <li>Collections</li>
-                <li>Men</li>
-                <li>Women</li>
-                <li>About</li>
-                <li>Contact</li>
+                {NavMenu.map((navmenu) => (
+                  <li>{navmenu.Collections}</li>
+                ))}
               </ul>
             </div>
           </div>
