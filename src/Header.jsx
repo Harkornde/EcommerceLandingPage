@@ -35,6 +35,8 @@ export default function Header() {
             </div>
 
             {/* Collections */}
+
+            {/* Mobile Nav */}
             <div
               className={`absolute top-0 left-0 w-[250px] min-h-screen font-bold text-lg bg-[#FFFFFF] z-50  transition-transform duration-300 ease-in-out ${
                 toggle ? "translate-x-0" : "-translate-x-full"
@@ -56,11 +58,11 @@ export default function Header() {
                 ))}
               </ul>
             </div>
-
+            {/* Desktop nav */}
             <div className="hidden md:block">
-              <ul className="flex gap-[33px] text-[#69707D] font-semiboldl">
+              <ul className="flex gap-[33px] text-[#69707D] font-semibold ">
                 {NavMenu.map((navmenu) => (
-                  <li>{navmenu.Collections}</li>
+                  <li className="cursor-pointer">{navmenu.Collections}</li>
                 ))}
               </ul>
             </div>
