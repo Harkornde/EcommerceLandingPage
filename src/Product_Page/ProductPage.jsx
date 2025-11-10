@@ -1,4 +1,5 @@
 import React from "react";
+import ImageSlider from "./ImageSlider";
 
 const ProductPage = () => {
   const price = 250;
@@ -6,13 +7,10 @@ const ProductPage = () => {
   const discountedprice = price * discount;
 
   return (
-    <div className="mt-6 md:mt-[5.625rem]">
+    <div className="mt-6 md:mt-22.5">
       <div className="md:flex md:w-[1110px] md:m-auto md:justify-around">
         {/* Product image page */}
-        <div>
-          <img src="/images/image-product-1.jpg" className="w-screen h-80 md:w-[445px] md:h-[445px] md:rounded-2xl" />
-          <div></div>
-        </div>
+        <ImageSlider />
 
         {/* Product details page */}
         <div className="md:w-[445px] md:mt-[62px]">
