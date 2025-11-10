@@ -30,7 +30,7 @@ const ImageSlider = () => {
   return (
     <div className="relative">
       <button
-        className="md:hidden absolute left-0 top-0 bottom-0"
+        className="md:hidden absolute left-0 top-0 bottom-0 cursor-pointer z-10"
         onClick={previousSlide}
       >
         <img
@@ -39,18 +39,27 @@ const ImageSlider = () => {
           className="bg-gray-50 w-9 h-9 p-2.5 rounded-full ml-4"
         />
       </button>
+
       <div>
-        {images.length > 0 && (
-          <img
-            src={images[currentIndex]}
-            alt={`Slide ${currentIndex + 1}`}
-            className="w-screen h-80 md:w-[445px] md:h-[445px] md:rounded-2xl object-cover"
-          />
-        )}
+        <div className="w-screen h-80 md:w-[445px] md:h-[445px] md:rounded-2xl overflow-hidden">
+          <div
+            className="flex h-full transition-transform duration-500 ease-in-out"
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          >
+            {images.map((imgSrc, index) => (
+              <img
+                key={index}
+                src={imgSrc}
+                alt={`Slide ${index + 1}`}
+                className="w-full h-full object-cover shrink-0"
+              />
+            ))}
+          </div>
+        </div>
         <div></div>
       </div>
       <button
-        className="md:hidden absolute right-0 top-0 bottom-0"
+        className="md:hidden absolute right-0 top-0 bottom-0 cursor-pointer"
         onClick={nextSlide}
       >
         <img
