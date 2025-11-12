@@ -29,6 +29,7 @@ const ImageSlider = () => {
 
   return (
     <div className="relative">
+      {/* Moblie slider button */}
       <button
         className="md:hidden absolute left-0 top-0 bottom-0 cursor-pointer z-10"
         onClick={previousSlide}
@@ -40,6 +41,7 @@ const ImageSlider = () => {
         />
       </button>
 
+      {/* Mobile Slider */}
       <div>
         <div className="w-screen h-80 md:w-[445px] md:h-[445px] md:rounded-2xl overflow-hidden">
           <div
@@ -56,6 +58,7 @@ const ImageSlider = () => {
             ))}
           </div>
         </div>
+        
         <div></div>
       </div>
       <button

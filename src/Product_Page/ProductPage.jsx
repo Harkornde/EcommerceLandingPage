@@ -1,5 +1,6 @@
 import React from "react";
 import ImageSlider from "./ImageSlider";
+import cart from "/public/images/icon-cart.svg"
 
 const ProductPage = () => {
   const price = 250;
@@ -13,7 +14,7 @@ const ProductPage = () => {
         <ImageSlider />
 
         {/* Product details page */}
-        <div className="md:w-[445px] md:mt-[62px]">
+        <div className="md:w-[445px] md:mt-4">
           <div className="mt-6 mx-6">
             <h className="text-[#FF7E1B] font-bold text-[14px] tracking-[1.85px]">
               SNEAKER COMPANY
@@ -47,8 +48,22 @@ const ProductPage = () => {
 
             {/* Product number and adding to cart */}
             <div>
-              <div></div>
-              <div></div>
+              <div className="mt-6">
+                <form>
+                  <input
+                    id="cart-number"
+                    className="block w-[327px] h-14 m-auto bg-[#F6F8FD] rounded-xl text-[20px] font-bold text-center"
+                    value={0}
+                    type="text"
+                  />
+                  <button
+                    className="w-[327px] h-14 m-auto block rounded-xl bg-[#FF7E1B] text-[16px] mt-4 mb-8 font-bold text-[#FFFFFF]"
+                    type="submit"
+                  >
+                   Add to cart
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>

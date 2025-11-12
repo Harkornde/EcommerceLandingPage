@@ -9,7 +9,7 @@ export default function Header() {
       <div>
         <header className="flex md:w-[1110px] md:h-[50px] mt-[19px] md:mt-7 items-baseline md:items-center justify-around md:justify-between m-auto">
           <div
-            className={`fixed inset-0 bg-black transition-opacity duration-300 z-40 ${
+            className={`md:hidden fixed inset-0 bg-black transition-opacity duration-300 z-40 ${
               toggle ? "opacity-75" : "opacity-0 pointer-events-none"
             }`}
             onClick={() => turnToglle(false)}
@@ -38,7 +38,7 @@ export default function Header() {
 
             {/* Mobile Nav */}
             <div
-              className={`absolute top-0 left-0 w-[250px] min-h-screen font-bold text-lg bg-[#FFFFFF] z-50  transition-transform duration-300 ease-in-out ${
+              className={`md:hidden fixed top-0 left-0 w-[250px] min-h-screen font-bold text-lg bg-[#FFFFFF] z-50  transition-transform duration-300 ease-in-out ${
                 toggle ? "translate-x-0" : "-translate-x-full"
               } ${toggle ? "visible" : "invisible"} `}
             >
@@ -54,7 +54,7 @@ export default function Header() {
               </button>
               <ul className="flex gap-5 mt-[54px] ml-[25px] flex-col text-[#1D2026] font-semibold">
                 {NavMenu.map((navmenu) => (
-                  <li>{navmenu.Collections}</li>
+                  <li key={crypto.randomUUID()}>{navmenu.Collections}</li>
                 ))}
               </ul>
             </div>
@@ -62,7 +62,7 @@ export default function Header() {
             <div className="hidden md:block">
               <ul className="flex gap-[33px] text-[#69707D] font-semibold ">
                 {NavMenu.map((navmenu) => (
-                  <li className="cursor-pointer">{navmenu.Collections}</li>
+                  <li key={crypto.randomUUID()} className="cursor-pointer">{navmenu.Collections}</li>
                 ))}
               </ul>
             </div>
@@ -82,3 +82,12 @@ export default function Header() {
     </>
   );
 }
+
+    // background: white;
+    // margin-top: 0;
+    // position: fixed;
+    // z-index: 20;
+    // top: 0;
+    // right: 0;
+    // left: 0;
+    // padding: 10px;
