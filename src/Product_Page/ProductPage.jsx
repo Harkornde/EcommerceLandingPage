@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import ImageSlider from "./ImageSlider";
-import cart from "/public/images/icon-cart.svg"
+import { BsCart2 } from "react-icons/bs";
+import { FaMinus, FaPlus } from "react-icons/fa";
 
 const ProductPage = () => {
   const price = 250;
   const discount = 0.5;
   const discountedprice = price * discount;
+
+  const [items, setNumberOfItems] = useState(0);
+
+  function increaseNumberOfItems(e) {
+    e.preventDefault();
+    setNumberOfItems(() => +items + 1);
+  }
+  function decreaseNumberOfItems(e) {
+    e.preventDefault();
+    if (items > 0) {
+      setNumberOfItems(() => +items - 1);
+    }
+  }
 
   return (
     <div className="mt-6 md:mt-22.5">
@@ -50,17 +64,36 @@ const ProductPage = () => {
             <div>
               <div className="mt-6">
                 <form>
-                  <input
-                    id="cart-number"
-                    className="block w-[327px] h-14 m-auto bg-[#F6F8FD] rounded-xl text-[20px] font-bold text-center"
-                    value={0}
-                    type="text"
-                  />
+                  <div className="relative">
+                    <button
+                      onClick={decreaseNumberOfItems}
+                      className="absolute top-0 bottom-0 ml-12"
+                    >
+                      <FaMinus color="#FF7E1B" />
+                    </button>
+
+                    <input
+                      onChange={(e) => setNumberOfItems(e.target.value)}
+                      id="cart-number"
+                      className="block w-[327px] h-14 m-auto bg-[#F6F8FD] rounded-xl text-[20px] font-bold text-center px-[72px]"
+                      value={items}
+                      type="number"
+                    />
+
+                    <button
+                      onClick={increaseNumberOfItems}
+                      className="absolute top-0 bottom-0 right-0 mr-12"
+                    >
+                      <FaPlus color="#FF7E1B" />
+                    </button>
+                  </div>
+
                   <button
-                    className="w-[327px] h-14 m-auto block rounded-xl bg-[#FF7E1B] text-[16px] mt-4 mb-8 font-bold text-[#FFFFFF]"
+                    className="w-[327px] h-14 m-auto rounded-xl bg-[#FF7E1B] text-[16px] mt-4 mb-8 font-bold text-[#FFFFFF] flex items-center justify-center"
                     type="submit"
                   >
-                   Add to cart
+                    <BsCart2 size={"16px"} />
+                    Add to cart
                   </button>
                 </form>
               </div>
