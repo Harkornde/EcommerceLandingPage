@@ -1,17 +1,23 @@
 import React, { useState } from "react";
-// import imageProductThumb1 from "/public/images/image-product-1-thumbnail.jpg";
+import imageProductThumb1 from "/images/image-product-1-thumbnail.jpg";
 import imageProduct1 from "/images/image-product-1.jpg";
-// import imageProductThumb2 from "/public/images/image-product-2-thumbnail.jpg";
+import imageProductThumb2 from "/images/image-product-2-thumbnail.jpg";
 import imageProduct2 from "/images/image-product-2.jpg";
-// import imageProductThumb3 from "/public/images/image-product-3-thumbnail.jpg";
+import imageProductThumb3 from "/images/image-product-3-thumbnail.jpg";
 import imageProduct3 from "/images/image-product-3.jpg";
-// import imageProductThumb4 from "/public/images/image-product-4-thumbnail.jpg";
+import imageProductThumb4 from "/images/image-product-4-thumbnail.jpg";
 import imageProduct4 from "/images/image-product-4.jpg";
 import next from "/images/icon-next.svg";
 import previous from "/images/icon-previous.svg";
 
 const ImageSlider = () => {
   const images = [imageProduct1, imageProduct2, imageProduct3, imageProduct4];
+  const thumbnail = [
+    imageProductThumb1,
+    imageProductThumb2,
+    imageProductThumb3,
+    imageProductThumb4,
+  ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -58,8 +64,19 @@ const ImageSlider = () => {
             ))}
           </div>
         </div>
-        
-        <div></div>
+
+        {/* Desktop Thumbnail */}
+        <div>
+          <div className="hidden md:flex gap-[31px] mt-8">
+            {thumbnail.map((src, index) => (
+              <img
+                className="w-[88px] h-[88px] rounded-xl"
+                key={index}
+                src={src}
+              />
+            ))}
+          </div>
+        </div>
       </div>
       <button
         className="md:hidden absolute right-0 top-0 bottom-0 cursor-pointer"

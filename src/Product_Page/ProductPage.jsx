@@ -61,13 +61,13 @@ const ProductPage = () => {
             </div>
 
             {/* Product number and adding to cart */}
-            <div>
+            <div className="">
               <div className="mt-6">
-                <form>
-                  <div className="relative">
+                <form className="md:flex md:gap-4">
+                  <div className="relative md:w-[157px] md:h-14">
                     <button
                       onClick={decreaseNumberOfItems}
-                      className="absolute top-0 bottom-0 ml-12"
+                      className="absolute top-0 bottom-0 ml-12 md:ml-4"
                     >
                       <FaMinus color="#FF7E1B" />
                     </button>
@@ -75,21 +75,22 @@ const ProductPage = () => {
                     <input
                       onChange={(e) => setNumberOfItems(e.target.value)}
                       id="cart-number"
-                      className="block w-[327px] h-14 m-auto bg-[#F6F8FD] rounded-xl text-[20px] font-bold text-center px-[72px]"
+                      className="block md:w-[157px] md:h-14 w-[327px] h-14 m-auto bg-[#F6F8FD] rounded-xl text-[20px] font-bold text-center outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       value={items}
                       type="number"
+                      readOnly
                     />
 
                     <button
                       onClick={increaseNumberOfItems}
-                      className="absolute top-0 bottom-0 right-0 mr-12"
+                      className="absolute top-0 bottom-0 right-0 mr-12 md:mr-4"
                     >
                       <FaPlus color="#FF7E1B" />
                     </button>
                   </div>
 
                   <button
-                    className="w-[327px] h-14 m-auto rounded-xl bg-[#FF7E1B] text-[16px] mt-4 mb-8 font-bold text-[#FFFFFF] flex items-center justify-center"
+                    className="w-[327px] md:w-[272px] md:mt-auto h-14 m-auto rounded-xl bg-[#FF7E1B] text-[16px] mt-4 mb-8 font-bold text-[#FFFFFF] flex items-center justify-center gap-1.5"
                     type="submit"
                   >
                     <BsCart2 size={"16px"} />
