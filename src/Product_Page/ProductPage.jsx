@@ -30,9 +30,9 @@ const ProductPage = () => {
         {/* Product details page */}
         <div className="md:w-[445px] md:mt-4">
           <div className="mt-6 mx-6">
-            <h className="text-[#FF7E1B] font-bold text-[14px] tracking-[1.85px]">
+            <h1 className="text-[#FF7E1B] font-bold text-[14px] tracking-[1.85px]">
               SNEAKER COMPANY
-            </h>
+            </h1>
             <h1 className="text-[28px] font-bold text-[#1D2026] mt-4 md:mt-7 md:text-[44px]">
               Fall Limited Edition Sneakers
             </h1>
@@ -67,7 +67,7 @@ const ProductPage = () => {
                   <div className="relative md:w-[157px] md:h-14">
                     <button
                       onClick={decreaseNumberOfItems}
-                      className="absolute top-0 bottom-0 ml-12 md:ml-4"
+                      className="absolute top-0 bottom-0 ml-12 md:ml-4 cursor-pointer"
                     >
                       <FaMinus color="#FF7E1B" />
                     </button>
@@ -83,14 +83,14 @@ const ProductPage = () => {
 
                     <button
                       onClick={increaseNumberOfItems}
-                      className="absolute top-0 bottom-0 right-0 mr-12 md:mr-4"
+                      className="absolute top-0 bottom-0 right-0 mr-12 md:mr-4 cursor-pointer"
                     >
                       <FaPlus color="#FF7E1B" />
                     </button>
                   </div>
 
                   <button
-                    className="w-[327px] md:w-[272px] md:mt-auto h-14 m-auto rounded-xl bg-[#FF7E1B] text-[16px] mt-4 mb-8 font-bold text-[#FFFFFF] flex items-center justify-center gap-1.5"
+                    className="w-[327px] md:w-[272px] md:mt-auto h-14 m-auto rounded-xl bg-[#FF7E1B] text-[16px] mt-4 mb-8 font-bold text-[#FFFFFF] flex items-center justify-center gap-1.5 cursor-pointer"
                     type="submit"
                   >
                     <BsCart2 size={"16px"} />

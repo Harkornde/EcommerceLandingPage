@@ -82,12 +82,3 @@ export default function Header() {
     </>
   );
 }
-
-    // background: white;
-    // margin-top: 0;
-    // position: fixed;
-    // z-index: 20;
-    // top: 0;
-    // right: 0;
-    // left: 0;
-    // padding: 10px;

@@ -1,25 +1,12 @@
 import React, { useState } from "react";
-import imageProductThumb1 from "/images/image-product-1-thumbnail.jpg";
-import imageProduct1 from "/images/image-product-1.jpg";
-import imageProductThumb2 from "/images/image-product-2-thumbnail.jpg";
-import imageProduct2 from "/images/image-product-2.jpg";
-import imageProductThumb3 from "/images/image-product-3-thumbnail.jpg";
-import imageProduct3 from "/images/image-product-3.jpg";
-import imageProductThumb4 from "/images/image-product-4-thumbnail.jpg";
-import imageProduct4 from "/images/image-product-4.jpg";
+import { images, thumbnail } from "/src/Image_data/image.js";
 import next from "/images/icon-next.svg";
 import previous from "/images/icon-previous.svg";
+import LightBox from "./LightBox";
 
 const ImageSlider = () => {
-  const images = [imageProduct1, imageProduct2, imageProduct3, imageProduct4];
-  const thumbnail = [
-    imageProductThumb1,
-    imageProductThumb2,
-    imageProductThumb3,
-    imageProductThumb4,
-  ];
-
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [lightbox, openLightBox] = useState(true);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
@@ -34,61 +21,87 @@ const ImageSlider = () => {
   };
 
   return (
-    <div className="relative">
-      {/* Moblie slider button */}
-      <button
-        className="md:hidden absolute left-0 top-0 bottom-0 cursor-pointer z-10"
-        onClick={previousSlide}
-      >
-        <img
-          src={previous}
-          alt="previous-slider"
-          className="bg-gray-50 w-9 h-9 p-2.5 rounded-full ml-4"
-        />
-      </button>
+    <>
+      <div className="relative">
+        {/* Moblie slider button */}
+        <button
+          className="md:hidden absolute left-0 top-0 bottom-0 cursor-pointer z-10"
+          onClick={previousSlide}
+        >
+          <img
+            src={previous}
+            alt="previous-slider"
+            className="bg-gray-50 w-9 h-9 p-2.5 rounded-full ml-4"
+          />
+        </button>
 
-      {/* Mobile Slider */}
-      <div>
-        <div className="w-screen h-80 md:w-[445px] md:h-[445px] md:rounded-2xl overflow-hidden">
-          <div
-            className="flex h-full transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-          >
-            {images.map((imgSrc, index) => (
-              <img
-                key={index}
-                src={imgSrc}
-                alt={`Slide ${index + 1}`}
-                className="w-full h-full object-cover shrink-0"
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Desktop Thumbnail */}
+        {/* Mobile Slider */}
         <div>
-          <div className="hidden md:flex gap-[31px] mt-8">
-            {thumbnail.map((src, index) => (
-              <img
-                className="w-[88px] h-[88px] rounded-xl"
-                key={index}
-                src={src}
-              />
-            ))}
+          <div className="w-screen h-80 md:w-[445px] md:h-[445px] md:rounded-2xl overflow-hidden">
+            <div
+              className="flex h-full transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              {images.map((imgSrc, index) => (
+                <img
+                  onClick={() => console.log("Clicked", index)}
+                  key={index}
+                  src={imgSrc}
+                  alt={`Slide ${index + 1}`}
+                  className="w-full h-full object-cover shrink-0"
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop Thumbnail */}
+          <div>
+            <div
+              onClick={() => console.log("Clicked")}
+              className="hidden md:flex gap-[31px] mt-8"
+            >
+              {thumbnail.map((src, index) => (
+                <div
+                  key={index}
+                  className="group relative w-[88px] h-[88px] rounded-xl cursor-pointer overflow-hidden"
+                >
+                  <img
+                    className="w-full h-full object-cover rounded-xl"
+                    src={src}
+                    alt={`Thumbnail ${index + 1}`}
+                  />
+                  <div
+                    className="absolute inset-0 w-full h-full rounded-xl bg-white 
+                     opacity-0 group-hover:opacity-50 transition-opacity border-2 border-transparent group-hover:border-[#FF7E1B]"
+                  ></div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
+        <button
+          className="md:hidden absolute right-0 top-0 bottom-0 cursor-pointer"
+          onClick={nextSlide}
+        >
+          <img
+            src={next}
+            alt="next-slider"
+            className="bg-gray-50 w-9 h-9 p-2.5 rounded-full mr-4"
+          />
+        </button>
       </div>
-      <button
-        className="md:hidden absolute right-0 top-0 bottom-0 cursor-pointer"
-        onClick={nextSlide}
-      >
-        <img
-          src={next}
-          alt="next-slider"
-          className="bg-gray-50 w-9 h-9 p-2.5 rounded-full mr-4"
-        />
-      </button>
-    </div>
+
+      {/* LightBox */}
+      <div>
+        <div
+          className={`fixed inset-0 bg-black transition-opacity duration-300 z-40 ${
+            lightbox ? "opacity-75" : "opacity-0 pointer-events-none"
+          }`}
+          onClick={() => openLightBox(false)}
+        ></div>
+        <LightBox currentIndex={currentIndex} />
+      </div>
+    </>
   );
 };
 
