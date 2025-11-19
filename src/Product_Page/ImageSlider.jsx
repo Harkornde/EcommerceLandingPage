@@ -6,7 +6,7 @@ import LightBox from "./LightBox";
 
 const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [lightbox, openLightBox] = useState(true);
+  const [lightbox, openLightBox] = useState(false);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
@@ -59,7 +59,9 @@ const ImageSlider = () => {
             <div className="hidden md:flex gap-[31px] mt-8">
               {thumbnail.map((src, index) => (
                 <div
-                  onClick={() => console.log("Clicked", index)}
+                  onClick={() => {
+                    openLightBox(true), setCurrentIndex(index);
+                  }}
                   key={index}
                   className="group relative w-[88px] h-[88px] rounded-xl cursor-pointer overflow-hidden"
                 >
@@ -90,14 +92,19 @@ const ImageSlider = () => {
       </div>
 
       {/* LightBox */}
-      <div>
+      <div className="hidden md:block">
         <div
           className={`fixed inset-0 bg-black transition-opacity duration-300 z-40 ${
             lightbox ? "opacity-75" : "opacity-0 pointer-events-none"
           }`}
           onClick={() => openLightBox(false)}
         ></div>
-        {lightbox && <LightBox currentIndex={currentIndex} />}
+        {lightbox && (
+          <LightBox
+            currentIndex={currentIndex}
+            setCurrentIndex={setCurrentIndex}
+          />
+        )}
       </div>
     </>
   );

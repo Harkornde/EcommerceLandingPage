@@ -1,6 +1,6 @@
 import { images, thumbnail } from "/src/Image_data/image.js";
 
-function LightBox({ currentIndex }) {
+function LightBox({ currentIndex,setCurrentIndex }) {
   return (
     <>
       <div className="absolute flex-col top-0 left-0  right-0 bottom-0 flex justify-center items-center z-50 pointer-events-none">
@@ -29,7 +29,7 @@ function LightBox({ currentIndex }) {
           <div className="hidden md:flex gap-[31px] mt-8 pointer-events-auto">
             {thumbnail.map((src, index) => (
               <div
-                onClick={() => console.log("Clicked", index)}
+                onClick={() => setCurrentIndex(index)}
                 key={index}
                 className="group relative w-[88px] h-[88px] rounded-xl cursor-pointer overflow-hidden"
               >
