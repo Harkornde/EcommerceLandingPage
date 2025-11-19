@@ -56,12 +56,10 @@ const ImageSlider = () => {
 
           {/* Desktop Thumbnail */}
           <div>
-            <div
-              onClick={() => console.log("Clicked")}
-              className="hidden md:flex gap-[31px] mt-8"
-            >
+            <div className="hidden md:flex gap-[31px] mt-8">
               {thumbnail.map((src, index) => (
                 <div
+                  onClick={() => console.log("Clicked", index)}
                   key={index}
                   className="group relative w-[88px] h-[88px] rounded-xl cursor-pointer overflow-hidden"
                 >
@@ -99,7 +97,7 @@ const ImageSlider = () => {
           }`}
           onClick={() => openLightBox(false)}
         ></div>
-        <LightBox currentIndex={currentIndex} />
+        {lightbox && <LightBox currentIndex={currentIndex} />}
       </div>
     </>
   );
