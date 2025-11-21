@@ -95,7 +95,7 @@ const ImageSlider = () => {
       <div className="hidden md:block">
         <div
           className={`fixed inset-0 bg-black transition-opacity duration-300 z-40 ${
-            lightbox ? "opacity-75" : "opacity-0 pointer-events-none"
+            lightbox ? "opacity-65" : "opacity-0 pointer-events-none"
           }`}
           onClick={() => openLightBox(false)}
         ></div>
@@ -103,6 +103,8 @@ const ImageSlider = () => {
           <LightBox
             currentIndex={currentIndex}
             setCurrentIndex={setCurrentIndex}
+            nextSlide={nextSlide}
+            previousSlide={previousSlide}
           />
         )}
       </div>
