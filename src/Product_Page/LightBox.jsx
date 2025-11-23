@@ -1,16 +1,29 @@
 import { images, thumbnail } from "/src/Image_data/image.js";
-import { MdNavigateNext } from "react-icons/md";
-import { MdNavigateBefore } from "react-icons/md";
+import { MdNavigateNext, MdNavigateBefore, MdClose } from "react-icons/md";
 
-function LightBox({ currentIndex, setCurrentIndex, nextSlide, previousSlide }) {
+function LightBox({
+  currentIndex,
+  setCurrentIndex,
+  nextSlide,
+  previousSlide,
+  setLightbox,
+}) {
   return (
     <>
       <div className="absolute flex-col top-0 left-0  right-0 bottom-0 flex justify-center items-center z-50 pointer-events-none">
         {/* Light box Image */}
         <div className="relative">
+          <div>
+            <button
+              className="mb-5 mr-0 text-white hover:text-[#FF7E1B] pointer-events-auto cursor-pointer float-end"
+              onClick={() => setLightbox(false)}
+            >
+              <MdClose size={32} />
+            </button>
+          </div>
           <button
             onClick={nextSlide}
-            className="absolute top-1/2 bottom-1/2 right-0 z-60 cursor-pointer pointer-events-auto -mr-7 h-[60px] "
+            className="absolute top-1/2 bottom-1/2 right-0 z-60 cursor-pointer pointer-events-auto -mr-7 h-[60px]"
           >
             <MdNavigateNext
               className="bg-[#FFFFFF] rounded-full p-3"
@@ -34,7 +47,6 @@ function LightBox({ currentIndex, setCurrentIndex, nextSlide, previousSlide }) {
             >
               {images.map((imgSrc, index) => (
                 <img
-                  onClick={() => console.log("Clicked", index)}
                   key={index}
                   src={imgSrc}
                   alt={`Slide ${index + 1}`}
@@ -76,6 +88,3 @@ function LightBox({ currentIndex, setCurrentIndex, nextSlide, previousSlide }) {
 }
 
 export default LightBox;
-// className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 ${
-// lightbox ? "scale-100" : "scale-0" // Optional: Add a pop animation
-// }`

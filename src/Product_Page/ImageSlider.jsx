@@ -44,7 +44,6 @@ const ImageSlider = () => {
             >
               {images.map((imgSrc, index) => (
                 <img
-                  onClick={() => console.log("Clicked", index)}
                   key={index}
                   src={imgSrc}
                   alt={`Slide ${index + 1}`}
@@ -105,6 +104,7 @@ const ImageSlider = () => {
             setCurrentIndex={setCurrentIndex}
             nextSlide={nextSlide}
             previousSlide={previousSlide}
+            setLightbox={openLightBox}
           />
         )}
       </div>

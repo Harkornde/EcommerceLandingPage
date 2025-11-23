@@ -12,8 +12,3 @@ export default function App() {
     </>
   );
 }
-//[hsl(219, 35%, 92%)]
-// height: 2px;
-// color: grey;
-// background-color: green;
-// border-width: 0;

@@ -3,6 +3,7 @@ import NavMenu from "./NavMenu/navMenu";
 
 export default function Header() {
   const [toggle, turnToglle] = useState(false);
+  // const [] = useState();
 
   return (
     <>
@@ -22,7 +23,6 @@ export default function Header() {
               <button
                 onClick={() => {
                   turnToglle(!toggle);
-                  console.log(toggle);
                 }}
               >
                 <img src="images/icon-menu.svg" />
@@ -62,7 +62,9 @@ export default function Header() {
             <div className="hidden md:block">
               <ul className="flex gap-[33px] text-[#69707D] font-semibold ">
                 {NavMenu.map((navmenu) => (
-                  <li key={crypto.randomUUID()} className="cursor-pointer">{navmenu.Collections}</li>
+                  <li key={crypto.randomUUID()} className="cursor-pointer">
+                    {navmenu.Collections}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -71,7 +73,9 @@ export default function Header() {
           {/* Cart and Profile */}
           <div className="flex gap-[22px] md:gap-[46px] items-center">
             <div>
-              <img src="images/icon-cart.svg" className="w-[22px] h-5" />
+              <button>
+                <img src="images/icon-cart.svg" className="w-[22px] h-5" />
+              </button>
             </div>
             <div>
               <img src="images/image-avatar.png" className="w-6 md:w-[50px]" />
