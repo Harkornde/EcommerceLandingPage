@@ -1,21 +1,21 @@
 import { useState } from "react";
 import NavMenu from "./NavMenu/navMenu";
+import { FaTrashAlt } from "react-icons/fa";
 
 export default function Header() {
   const [toggle, turnToglle] = useState(false);
-  // const [] = useState();
+  const [cart, checkCart] = useState(false);
 
   return (
     <>
       <div>
-        <header className="flex md:w-[1110px] md:h-[50px] mt-[19px] md:mt-7 items-baseline md:items-center justify-around md:justify-between m-auto">
+        <header className="relative flex md:w-[1110px] md:h-[50px] mt-[19px] md:mt-7 items-baseline md:items-center justify-around md:justify-between m-auto">
           <div
             className={`md:hidden fixed inset-0 bg-black transition-opacity duration-300 z-40 ${
               toggle ? "opacity-75" : "opacity-0 pointer-events-none"
             }`}
             onClick={() => turnToglle(false)}
           ></div>
-
           {/* Logo and list container */}
           <div className="flex items-baseline gap-4 md:gap-[59px]">
             {/* Working with the modal */}
@@ -69,11 +69,48 @@ export default function Header() {
               </ul>
             </div>
           </div>
+          {/* Carts Product and number  */}
+
+          {cart && (
+            <div className="absolute md:top-0 md:right-0 mt-[60px] md:-mr-25 p-6 rounded-2xl w-[calc(100%-16px)] md:w-[360px] h-64 md:h-70 z-30 bg-[#FFFFFF] shadow-2xl border border-gray-100">
+              <h1 className="text-[16px] font-bold">Cart</h1>
+              <hr className="border-0 h-0.5 bg-[#E4E9F2] mt-6 -mx-6" />
+
+              <div className="mt-6 flex gap-4">
+                <img
+                  className="w-[50px] h-[50px] rounded-md"
+                  src="/images/image-product-1-thumbnail.jpg"
+                />
+                <div className="text-[#69707D]">
+                  <p>Fall Limited Edition Sneakers</p>
+                  <p>
+                    $125.00 x 3{" "}
+                    <span className="text-[#1D2026] inline-block ml-2">
+                      <strong>$375.00</strong>
+                    </span>
+                  </p>
+                </div>
+                <button className="ml-1">
+                  <FaTrashAlt color="#C3CAD9" />
+                </button>
+              </div>
+
+              {/* Checkout button */}
+              <button className="bg-[#FF7E1B] mt-6 w-[312px] h-14 cursor-pointer rounded-xl text-[#FFFFFF] font-bold">
+                Checkout
+              </button>
+            </div>
+          )}
 
           {/* Cart and Profile */}
           <div className="flex gap-[22px] md:gap-[46px] items-center">
             <div>
-              <button>
+              <button
+                onClick={() => {
+                  checkCart((cart) => !cart);
+                }}
+                className="cursor-pointer"
+              >
                 <img src="images/icon-cart.svg" className="w-[22px] h-5" />
               </button>
             </div>
@@ -86,3 +123,4 @@ export default function Header() {
     </>
   );
 }
+//hidden md:block m-auto border-0 h-px bg-[#E4E9F2] mt-[34px] md:w-[1110px]
