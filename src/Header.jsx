@@ -2,7 +2,7 @@ import { useState } from "react";
 import NavMenu from "./NavMenu/navMenu";
 import { FaTrashAlt } from "react-icons/fa";
 
-export default function Header() {
+export default function Header({ items, price }) {
   const [toggle, turnToglle] = useState(false);
   const [cart, checkCart] = useState(false);
 
@@ -76,29 +76,37 @@ export default function Header() {
               <h1 className="text-[16px] font-bold">Cart</h1>
               <hr className="border-0 h-0.5 bg-[#E4E9F2] mt-6 -mx-6" />
 
-              <div className="mt-6 flex gap-4">
-                <img
-                  className="w-[50px] h-[50px] rounded-md"
-                  src="/images/image-product-1-thumbnail.jpg"
-                />
-                <div className="text-[#69707D]">
-                  <p>Fall Limited Edition Sneakers</p>
-                  <p>
-                    $125.00 x 3{" "}
-                    <span className="text-[#1D2026] inline-block ml-2">
-                      <strong>$375.00</strong>
-                    </span>
-                  </p>
+              {items === 0 ? (
+                <div>
+                  <h1 className="text-center mt-19">Your cart is empty.</h1>
                 </div>
-                <button className="ml-1">
-                  <FaTrashAlt color="#C3CAD9" />
-                </button>
-              </div>
+              ) : (
+                <div>
+                  <div className="mt-6 flex gap-4">
+                    <img
+                      className="w-[50px] h-[50px] rounded-md"
+                      src="/images/image-product-1-thumbnail.jpg"
+                    />
+                    <div className="text-[#69707D]">
+                      <p>Fall Limited Edition Sneakers</p>
+                      <p>
+                        $125.00 x 3{" "}
+                        <span className="text-[#1D2026] inline-block ml-2">
+                          <strong>$375.00</strong>
+                        </span>
+                      </p>
+                    </div>
+                    <button className="ml-1">
+                      <FaTrashAlt color="#C3CAD9" />
+                    </button>
+                  </div>
 
-              {/* Checkout button */}
-              <button className="bg-[#FF7E1B] mt-6 w-[312px] h-14 cursor-pointer rounded-xl text-[#FFFFFF] font-bold">
-                Checkout
-              </button>
+                  {/* Checkout button */}
+                  <button className="bg-[#FF7E1B] mt-6 w-[312px] h-14 cursor-pointer rounded-xl text-[#FFFFFF] font-bold">
+                    Checkout
+                  </button>
+                </div>
+              )}
             </div>
           )}
 

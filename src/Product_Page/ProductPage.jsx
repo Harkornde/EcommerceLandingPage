@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+// import { useState } from "react";
 import ImageSlider from "./ImageSlider";
 import { BsCart2 } from "react-icons/bs";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
-const ProductPage = () => {
-  const price = 250;
-  const discount = 0.5;
-  const discountedprice = price * discount;
-
-  const [items, setNumberOfItems] = useState(0);
+const ProductPage = ({ setNumberOfItems, items,discountedprice, price}) => {
+  // const price = 250;
+  // const discount = 0.5;
+  // const discountedprice = price * discount;
 
   function increaseNumberOfItems(e) {
     e.preventDefault();
@@ -19,6 +17,11 @@ const ProductPage = () => {
     if (items > 0) {
       setNumberOfItems(() => +items - 1);
     }
+  }
+
+  function addToCart(e) {
+    e.preventDefault();
+    // console.log("add to cart", items, discountedprice, discountedprice * items);
   }
 
   return (
@@ -76,7 +79,7 @@ const ProductPage = () => {
                       onChange={(e) => setNumberOfItems(e.target.value)}
                       id="cart-number"
                       className="block md:w-[157px] md:h-14 w-[327px] h-14 m-auto bg-[#F6F8FD] rounded-xl text-[20px] font-bold text-center outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-                      value={items}
+                      value={+items}
                       type="number"
                       readOnly
                     />
@@ -90,7 +93,8 @@ const ProductPage = () => {
                   </div>
 
                   <button
-                    className="w-[327px] md:w-[272px] md:mt-auto h-14 m-auto rounded-xl bg-[#FF7E1B] text-[16px] mt-4 mb-8 font-bold text-[#FFFFFF] flex items-center justify-center gap-1.5 cursor-pointer"
+                    onClick={addToCart}
+                    className="w-full md:w-[272px] h-14 rounded-xl bg-[#FF7E1B] hover:bg-[#FFAB6A] transition-colors text-[16px] font-bold text-[#FFFFFF] flex items-center justify-center gap-4 cursor-pointer shadow-lg shadow-orange-200"
                     type="submit"
                   >
                     <BsCart2 size={"16px"} />
