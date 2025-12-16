@@ -3,7 +3,13 @@ import ImageSlider from "./ImageSlider";
 import { BsCart2 } from "react-icons/bs";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
-const ProductPage = ({ setNumberOfItems, items,discountedprice, price}) => {
+const ProductPage = ({
+  setNumberOfItems,
+  items,
+  discountedprice,
+  price,
+  setNumItems,
+}) => {
   // const price = 250;
   // const discount = 0.5;
   // const discountedprice = price * discount;
@@ -21,7 +27,7 @@ const ProductPage = ({ setNumberOfItems, items,discountedprice, price}) => {
 
   function addToCart(e) {
     e.preventDefault();
-    // console.log("add to cart", items, discountedprice, discountedprice * items);
+    setNumItems(() => items);
   }
 
   return (
@@ -94,7 +100,7 @@ const ProductPage = ({ setNumberOfItems, items,discountedprice, price}) => {
 
                   <button
                     onClick={addToCart}
-                    className="w-full md:w-[272px] h-14 rounded-xl bg-[#FF7E1B] hover:bg-[#FFAB6A] transition-colors text-[16px] font-bold text-[#FFFFFF] flex items-center justify-center gap-4 cursor-pointer shadow-lg shadow-orange-200"
+                    className="w-full md:w-[272px] h-14 rounded-xl bg-[#FF7E1B] hover:bg-[#FFAB6A] transition-colors text-[16px] font-bold text-[#FFFFFF] flex items-center justify-center gap-4 cursor-pointer shadow-lg shadow-orange-200 mb-4"
                     type="submit"
                   >
                     <BsCart2 size={"16px"} />
