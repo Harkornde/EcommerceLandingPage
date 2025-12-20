@@ -2,7 +2,7 @@ import { useState } from "react";
 import NavMenu from "./NavMenu/navMenu";
 import { FaTrashAlt } from "react-icons/fa";
 
-export default function Header({ numItems, discountedprice }) {
+export default function Header({ setNumItems, numItems, discountedprice }) {
   const [toggle, turnToglle] = useState(false);
   const [cart, checkCart] = useState(false);
 
@@ -64,7 +64,10 @@ export default function Header({ numItems, discountedprice }) {
             <div className="hidden md:block">
               <ul className="flex gap-[33px] text-[#69707D] font-semibold ">
                 {NavMenu.map((navmenu) => (
-                  <li key={crypto.randomUUID()} className="cursor-pointer">
+                  <li
+                    key={crypto.randomUUID()}
+                    className="cursor-pointer py-11 border-b-3 border-transparent hover:border-[#FF7E1B]"
+                  >
                     {navmenu.Collections}
                   </li>
                 ))}
@@ -98,13 +101,21 @@ export default function Header({ numItems, discountedprice }) {
                         </span>
                       </p>
                     </div>
-                    <button className="ml-1">
+
+                    {/* Delete/Clear cart Buttom */}
+                    <button
+                      onClick={() => setNumItems(0)}
+                      className="ml-1 cursor-pointer"
+                    >
                       <FaTrashAlt color="#C3CAD9" />
                     </button>
                   </div>
 
                   {/* Checkout button */}
-                  <button className="bg-[#FF7E1B] mt-6 w-[312px] h-14 cursor-pointer rounded-xl text-[#FFFFFF] font-bold">
+                  <button
+                    className="bg-[#FF7E1B] mt-6 w-[312px] h-14 cursor-pointer rounded-xl text-[#FFFFFF] font-bold transition-all duration-200 ease-in-out
+             active:scale-95 active:shadow-none"
+                  >
                     Checkout
                   </button>
                 </div>
@@ -114,7 +125,14 @@ export default function Header({ numItems, discountedprice }) {
 
           {/* Cart and Profile */}
           <div className="flex gap-[22px] md:gap-[46px] items-center">
-            <div>
+            <div className="relative">
+              {numItems !== 0 ? (
+                <h1 className="absolute text-[#FFFFFF] text-[12px] font-bold w-6 h-auto bg-[#FF7E1B] text-center rounded-lg bottom-[15px] left-2.5">
+                  {numItems}
+                </h1>
+              ) : (
+                ""
+              )}
               <button
                 onClick={() => {
                   checkCart((cart) => !cart);
@@ -125,7 +143,10 @@ export default function Header({ numItems, discountedprice }) {
               </button>
             </div>
             <div>
-              <img src="images/image-avatar.png" className="w-6 md:w-[50px]" />
+              <img
+                src="images/image-avatar.png"
+                className="w-6 md:w-[50px] cursor-pointer rounded-full border-2 border-transparent hover:border-[#FF7E1B] transition-all duration-300"
+              />
             </div>
           </div>
         </header>

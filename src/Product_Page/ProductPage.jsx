@@ -100,7 +100,7 @@ const ProductPage = ({
 
                   <button
                     onClick={addToCart}
-                    className="w-full md:w-[272px] h-14 rounded-xl bg-[#FF7E1B] hover:bg-[#FFAB6A] transition-colors text-[16px] font-bold text-[#FFFFFF] flex items-center justify-center gap-4 cursor-pointer shadow-lg shadow-orange-200 mb-4"
+                    className="w-full md:w-[272px] h-14 rounded-xl bg-[#FF7E1B] hover:bg-[#FFAB6A] transition-colors text-[16px] font-bold text-[#FFFFFF] flex items-center justify-center gap-4 cursor-pointer shadow-lg shadow-orange-200 mb-4 duration-200 ease-in-out active:scale-95 active:shadow-none"
                     type="submit"
                   >
                     <BsCart2 size={"16px"} />
