@@ -16,7 +16,7 @@ export default function App() {
     <>
       <div>
         {/* Header */}
-        <Header setNumItems={setNumItems} numItems={numItems} discountedprice={discountedprice} />
+        <Header setNumItems={setNumItems} numItems={numItems} discountedprice={discountedprice}/>
 
         <hr className="hidden md:block m-auto border-0 h-px bg-[#E4E9F2] mt-[34px] md:w-[1110px]" />
 

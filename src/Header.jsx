@@ -2,11 +2,18 @@ import { useState } from "react";
 import NavMenu from "./NavMenu/navMenu";
 import { FaTrashAlt } from "react-icons/fa";
 
-export default function Header({ setNumItems, numItems, discountedprice }) {
+export default function Header({
+  setNumItems,
+  numItems,
+  discountedprice
+}) {
   const [toggle, turnToglle] = useState(false);
   const [cart, checkCart] = useState(false);
 
-  // const totalPrice =
+  function checkOut() {
+    setNumItems(0)
+    alert("Processing goods");
+  }
 
   return (
     <>
@@ -113,6 +120,7 @@ export default function Header({ setNumItems, numItems, discountedprice }) {
 
                   {/* Checkout button */}
                   <button
+                    onClick={checkOut}
                     className="bg-[#FF7E1B] mt-6 w-[312px] h-14 cursor-pointer rounded-xl text-[#FFFFFF] font-bold transition-all duration-200 ease-in-out
              active:scale-95 active:shadow-none"
                   >
@@ -154,4 +162,3 @@ export default function Header({ setNumItems, numItems, discountedprice }) {
     </>
   );
 }
-//hidden md:block m-auto border-0 h-px bg-[#E4E9F2] mt-[34px] md:w-[1110px]
