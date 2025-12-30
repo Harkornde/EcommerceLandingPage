@@ -28,6 +28,7 @@ const ProductPage = ({
   function addToCart(e) {
     e.preventDefault();
     setNumItems(() => items);
+    setNumberOfItems(() => 0);
   }
 
   return (
@@ -84,7 +85,7 @@ const ProductPage = ({
                     <input
                       onChange={(e) => setNumberOfItems(e.target.value)}
                       id="cart-number"
-                      className="block md:w-[157px] md:h-14 w-[327px] h-14 m-auto bg-[#F6F8FD] rounded-xl text-[20px] font-bold text-center outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                      className="block md:w-[157px] h-14 w-full mb-5 m-auto bg-[#F6F8FD] rounded-xl text-[20px] font-bold text-center outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       value={+items}
                       type="number"
                       readOnly
